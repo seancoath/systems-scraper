@@ -65,7 +65,7 @@ def get_movement_arrow(movement: str) -> str:
 
     return arrows.get(movement, "-")
 
-def display_data(players: list, tour: str):
+def display_data(players: list, tour: str, display_reverse: bool):
     """displays data in a table form about the players in the given tour"""
 
     if not players:
@@ -73,7 +73,10 @@ def display_data(players: list, tour: str):
         return
 
     # display header
-    print(f"\nCurrent Top {len(players)} {tour.upper()} Players by Ranking")
+    if not display_reverse:
+        print(f"\nCurrent Top {len(players)} {tour.upper()} Players by Ranking")  # header for Top X players
+    else:
+        print(f"\nCurrent Bottom {len(players)} {tour.upper()} Players by Ranking")  # header for Bottom X players
     print("=" * 65)
     print(f"{"Rank":<8}{"Move":<6}{"Name":<32}{"Country":<10}{"Points":<10}")
     print("-" * 65)
@@ -108,4 +111,4 @@ if __name__ == "__main__":
     tour_results = fetch_all_data(target_tours, args.num, args.reverse)
 
     for tour, players in tour_results.items():
-        display_data(players, tour)
+        display_data(players, tour, args.reverse)
