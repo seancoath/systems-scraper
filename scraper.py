@@ -34,7 +34,7 @@ def fetch_tour_data(tour: str) -> tuple[str, list[dict]]:
     return (tour, data)
 
 def fetch_all_data(tours: list[str], num_players: int = 10, display_reverse: bool = False) -> dict[str, list[dict]]:
-    """f"""
+    """return filtered/sorted player data based on the given parameters"""
 
     results = {}
 
